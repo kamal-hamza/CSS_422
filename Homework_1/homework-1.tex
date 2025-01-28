@@ -1,0 +1,207 @@
+\documentclass{article}
+
+\usepackage{qa}
+
+\begin{document}
+\customtitle{Homework 1}
+\customauthor{Hamza Kamal}
+\customdate{\today}
+\section*{Questions}
+     \subsection*{Q1. (6 pts) Number conversion. You must show your work.}
+          \qna{
+               Convert the hexadecimal number $973D4_{16}$ to the decimal number. (1.5pts)
+          } {
+               \begin{math}
+                    \\
+                    = (4 * 16^{0}) + (13 * 16^{1}) + (3 * 16^{2}) + (7 * 16^{3}) + (9 * 16^{4}) \\
+                    = 4 + 208 + 768 + 28672 + 589824 \\
+                    = 619476
+               \end{math}
+          }
+          \qna{
+               Convert to the decimal number $987654321$ to hexadecimal number. (1.5pts)
+          } {
+               \begin{math}
+                    \\
+                    = 987654321 \\
+                    = 987654321 / 16 = 61728395, r = 1 \rightarrow 1 \\
+                    = 61728395 / 16 = 3858024, r = 11 \rightarrow B \\
+                    = 3858024 / 16 = 241126, r = 8 \rightarrow 8 \\
+                    = 241126 / 16 = 15070, r = 6 \rightarrow 6 \\
+                    = 15070 / 16 = 941, r = 14 \rightarrow E \\
+                    = 941 / 16 = 58, r = 13 \rightarrow D \\
+                    = 58 / 16 = 3, r = 10 \rightarrow A \\
+                    = 3 / 16 = 0, r = 3 \rightarrow 3 \\
+                    = 3ADE68B1_{16}
+               \end{math}
+          }
+          \qna{
+               Convert the hexadecimal number $C5FE_{16}$ to the octal number. (1.5ps)
+          } {
+               \begin{math}
+                    \\
+                    = (14 * 16^{0}) + (15 * 16^{1}) + (5 * 16^{2}) + (12 * 16^{3}) \\
+                    = 14 + 240 + 1280 + 49152 \\
+                    = 50686 \\
+                    = 50686 / 8 = 6335, r = 6 \rightarrow 6 \\
+                    = 6335 / 8 = 791, r = 7 \rightarrow 7 \\
+                    = 791 / 8 = 98, r = 7 \rightarrow 7 \\
+                    = 98 / 8 = 12, r = 2 \rightarrow 2 \\
+                    = 12 / 8 = 1, r = 4 \rightarrow 4 \\
+                    = 1 / 8 = 0, r = 1 \rightarrow 1 \\
+                    = 142776_{8}
+               \end{math}
+          }
+          \qna{
+               Convert the octal number $125715_{8}$ to the hexadecimal number. (1.5pts)
+          } {
+               \begin{math}
+                    \\
+                    = (5 * 8^{0}) + (1 * 8^{1}) + (7 * 8^{2}) + (5 * 8^{3}) + (2 * 8^{4}) + (1 * 8^{5}) \\
+                    = 5 + 8 + 448 + 2560 + 8192 + 32768 \\
+                    = 43981 \\
+                    = 43981 / 16 = 2748, r = 13 \rightarrow D \\
+                    = 2748 / 16 = 171, r = 12 \rightarrow C \\
+                    = 171 / 16 = 10, r = 11 \rightarrow B \\
+                    = 10 / 16 = 0, r = 10 \rightarrow A \\
+                    = ABCD_{16}
+               \end{math}
+          }
+     
+     \subsection*{Q2. (6 pts) Two’s complement }
+          \qna{
+               Assume that we are using an 8-bit system. Represent a negative integer with two’s complement format. \\
+               Convert the decimal numbers $-102$ and $-87$ into hexadecimal number (1.5pts)
+          } {
+               \begin{math}
+                    \\
+                    \text{$2's$ complement of $-102$:} \\
+                    = 102 \\
+                    = 102 / 2 = 51, r = 0 \rightarrow 0 \\
+                    = 51 / 2 = 25, r = 1 \rightarrow 1 \\
+                    = 25 / 2 = 12, r = 1 \rightarrow 1 \\
+                    = 12 / 2 = 6, r = 0 \rightarrow 0 \\
+                    = 6 / 2 = 3, r = 0 \rightarrow 0 \\
+                    = 3 / 2 = 1, r = 1 \rightarrow 1 \\
+                    = 1 / 2 = 0, r = 1 \rightarrow 1 \\
+                    = 01100110_{2} \\
+                    \text{flipping the bits:} \\
+                    = 10011001_{2} \\
+                    \text{adding 1:} \\
+                    = 10011001_{2} + 1 \\
+                    = 10011010_{2} \\
+                    \linebreak
+                    \text{$2's$ complement of $-87$:} \\
+                    = 87 \\
+                    = 87 / 2 = 43, r = 1 \rightarrow 1 \\
+                    = 43 / 2 = 21, r = 1 \rightarrow 1 \\
+                    = 21 / 2 = 10, r = 1 \rightarrow 1 \\
+                    = 10 / 2 = 5, r = 0 \rightarrow 0 \\
+                    = 5 / 2 = 2, r = 1 \rightarrow 1 \\
+                    = 2 / 2 = 1, r = 0 \rightarrow 0 \\
+                    = 1/ 2 = 0, r = 1 \rightarrow 1 \\
+                    = 01010111_{2} \\
+                    \text{flipping the bits:} \\
+                    = 10101000_{2} \\
+                    \text{adding 1:} \\
+                    = 10101000_{2} + 1 \\
+                    = 10101001_{2} \\
+                    \linebreak
+                    \text{Convert $-102$ into hexadecimal:} \\
+                    = 10011010_{2} \\
+                    = 1001 \; 1010 \\
+                    = 9A_{16} \\
+                    \linebreak
+                    \text{Convert $-87$ into hexadecimal:} \\
+                    = 10101001_{2} \\
+                    = 1010 \; 1001 \\
+                    = A9_{16}
+               \end{math}
+          }
+          \qna{
+               Add two numbers of the previous question as hexadecimal, and answer: \\
+               What is the sum in 8-bits system? (1.5pts)
+          } {
+               \begin{math}
+                    \\
+                    = 9A_{16} + A9_{16} \\
+                    = 143_{16} \\
+               \end{math}
+          }
+          \qna{
+               Is it a correct answer? If it is not, explain why. (1.5pts)
+          } {
+               Yes
+          }
+
+     \subsection*{Q3. (8 pts) Floating point numbers}
+          \qna{
+               Convert the following decimal numbers in IEEE single-precision format. Give the result as eight hexadecimal digits. 2pts for each of a) and b) \\
+               -69/32 (-69 divide by 32)
+          } {
+               \begin{math}
+                    \\
+                    = -69 / 32 = -2.15625 \\
+                    \text{Sign: 1} \\
+                    = 2.15625 = 10.00101 \\
+                    = 1.000101 * 2^{1} \\
+                    \text{Exponent: $1 + 127 = 128$} \\
+                    = 128 = 10000000_{2} \\
+                    \text{Mantissa: $00010100000000000000000$} \\
+                    = 1 \; 10000000 \; 00010100000000000000000 \\
+                    = 1100 \; 0000 \; 0000 \; 1010 \; 0000 \; 0000 \; 0000 \; 0000 \\
+                    = C00A0000_{16}
+               \end{math}
+          }
+          \qna{
+               13.625
+          } {
+               \begin{math}
+                    \\
+                    = 13.625 = 1101.101 \\
+                    \text{Sign: 0} \\
+                    = 1.101101 * 2{3} \\
+                    \text{Exponent: $3 + 127 = 130$} \\
+                    = 130 = 10000010_{2} \\
+                    \text{Mantissa: $10110100000000000000000$} \\
+                    = 0 \; 10000010 \; 10110100000000000000000 \\
+                    = 0100 \; 0001 \; 0101 \; 1010 \; 0000 \; 0000 \; 0000 \; 0000 \\
+                    = 415A0000_{16}
+               \end{math}
+          }
+          \qna{
+               Convert the following floating IEEE single-precision floating-point numbers from hex to decimal: 2pts for each of a) and b) \\
+               $42E48000_{16}$
+          } {
+               \begin{math}
+                    \\
+                    = 42E48000_{16} \\
+                    = 0100 \; 0010 \; 1110 \; 0100 \; 1000 \; 0000 \; 0000 \; 0000 \\
+                    \text{Sign: 0} \\
+                    \text{Exponent: $10000101$}
+                    = 133 - 127 = 6 \\
+                    \text{Mantissa: $11001001000000000000000$}
+                    = 1.11001001000000000000000 * 2^{6} \\
+                    = 1110010.0100000000000000 \\
+                    = 114.25
+               \end{math}
+          }
+          \qna{
+               $C6F00040_{16}$
+          } {
+               \begin{math}
+                    \\
+                    = C6F00040_{16} \\
+                    = 1100 \; 0110 \; 1111 \; 0000 \; 0000 \; 0000 \; 0100 \; 0000 \\
+                    \text{Sign: 1} \\
+                    \text{Exponent: $10001101$} \\
+                    = 141 - 127 = 14 \\
+                    \text{Mantissa: $11100000000000001000000$} \\
+                    = 1.11100000000000001000000 * 2^{14} \\
+                    = 111100000000000.001000000 \\
+                    = 30720.125 \\
+                    \text{Add Sign: $-30720.125$}
+               \end{math}
+          }
+
+\end{document}

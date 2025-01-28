@@ -5,4 +5,5 @@ LOOP   ADD     R0, R1, R0; Add R1 to R0
        SUB     R1, R1, #1; Subtract 1 from R1
        CMP     R1, #0; Compare R1 to 0
        BNE     LOOP
-       STR     R0, [R2]
+       STR     R0, [R2]; Store the result in 0x0100
+       END
