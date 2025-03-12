@@ -385,19 +385,29 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>heap_template.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\Files\heap_template.s</FilePath>
-            </File>
-            <File>
               <FileName>driver_keil.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Files\driver_keil.c</FilePath>
             </File>
             <File>
-              <FileName>stdlib_template.s</FileName>
+              <FileName>heap.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\Files\stdlib_template.s</FilePath>
+              <FilePath>.\Files\heap.s</FilePath>
+            </File>
+            <File>
+              <FileName>stdlib.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Files\stdlib.s</FilePath>
+            </File>
+            <File>
+              <FileName>svc.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Files\svc.s</FilePath>
+            </File>
+            <File>
+              <FileName>timer.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Files\timer.s</FilePath>
             </File>
           </Files>
         </Group>
