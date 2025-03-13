@@ -8,10 +8,8 @@
 ;	n		- a number of bytes to zero-initialize
 ; Return value
 ;   none
-		EXPORT	_bzero
+		EXPORT	_bzero 
 _bzero
-		; implement your complete logic, including stack operations
-		
 		; Save registers to the stack (non-volatile registers and LR)
         ; This ensures that the function doesn't clobber registers used by the caller 
 		STMFD	sp!, {r1-r12,lr}	; Save r1-r12 and LR (link register) to the stack
@@ -37,15 +35,13 @@ _bzero_return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; char* _strncpy( char* dest, char* src, int size )
 ; Parameters
-;   	dest 	- pointer to the buffer to copy to
-;	src	- pointer to the zero-terminated string to copy from
+;   dest 	- pointer to the buffer to copy to
+;	src		- pointer to the zero-terminated string to copy from
 ;	size	- a total of n bytes
 ; Return value
 ;   dest
 		EXPORT	_strncpy
 _strncpy
-		; implement your complete logic, including stack operations
-		
 		; r0 = destination buffer (dest)
         ; r1 = source string (src)
         ; r2 = number of bytes to copy (size)
@@ -64,8 +60,7 @@ _strncpy_loop						; while( ) {
 _strncpy_return
 		MOV		r0, r3				; Return original 'dest' pointer 
 		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack 
-		
-		MOV		pc, lr
+		MOV		pc, lr 				; Return to caller 
 		
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; void* _malloc( int size )
@@ -75,15 +70,12 @@ _strncpy_return
 ;   	void*	a pointer to the allocated space
 		EXPORT	_malloc
 _malloc
-		; save registers
-		; set the system call # to R7
 		STMFD	sp!, {r1-r12,lr}	; Save registers on stack 
 		MOV 	R7, #3				; System call number for memory allocation 
 		; Argument: size is already in r0
-	    SVC     #0x0
-		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack
-		; resume registers
-		MOV		pc, lr
+		SVC     #0x0				; Trigger system call
+		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack 
+		MOV		pc, lr 				; Return to caller 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; void _free( void* addr )
@@ -93,15 +85,12 @@ _malloc
 ;   	none
 		EXPORT	_free
 _free
-		; save registers
-		; set the system call # to R7
 		STMFD	sp!, {r1-r12,lr}	; Save registers on stack
 		MOV 	R7, #4				; System call number for freeing memory
 		; Argument: address is already in r0 
-		SVC     #0x0
-		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack
-		; resume registers
-		MOV		pc, lr
+		SVC     #0x0				; Trigger system call 
+		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack 
+		MOV		pc, lr 				; Return to caller 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; unsigned int _alarm( unsigned int seconds )
@@ -113,15 +102,12 @@ _free
 ;                  ed alarm. 
 		EXPORT	_alarm
 _alarm
-		; save registers
-		; set the system call # to R7
 		STMFD	sp!, {r1-r12,lr}	; Save registers on stack
 		MOV 	R7, #1 				; System call number for setting an alarm 
-		; Argument: seconds is already in r0
-        SVC     #0x0
-		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack
-		; resume registers	
-		MOV		pc, lr		
+		; Argument: seconds is already in r0 
+		SVC     #0x0				; Trigger system call
+		LDMFD	sp!, {r1-r12,lr}	; Restore registers from stack 
+		MOV		pc, lr				; Return to caller 
 			
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; void* _signal( int signum, void *handler )
@@ -133,17 +119,14 @@ _alarm
 ;             (the same as the 2nd parameter in this project)
 		EXPORT	_signal
 _signal
-		; save registers
-		; set the system call # to R7
 		STMFD	sp!, {r2-r12,lr}	; Save registers on stack
 		MOV 	R7, #2				; System call number for setting a signal handler 
 		; Arguments: 
 		; r0 = signal number (should be 14 for SIGALRM)
         ; r1 = function pointer to handler
-        SVC     #0x0
+		SVC     #0x0				; Trigger system call 
 		LDMFD	sp!, {r2-r12,lr}	; Restore registers from stack
-		; resume registers
-		MOV		pc, lr	
+		MOV		pc, lr				; Return to caller 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		END			
